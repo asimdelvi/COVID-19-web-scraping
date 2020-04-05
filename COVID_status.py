@@ -32,8 +32,7 @@ def status_based_on_countries():
     country_name = input("enter country name: ").lower()
     for i in all_countries_status():
         if i["Country,Other"].lower() == country_name:
-            for k, v in i.items():
-                print(f"{k}:{v}")
+            return i
 
 
 scrape_data()

@@ -22,8 +22,7 @@ class Covid:
         state_name = input("enter state name: ").lower()
         for i in self.all_states_status():
             if i["Name of State / UT"].lower() == state_name:
-                for k, v in i.items():
-                    print(f"{k}:{v}")
+                return i
 
 
 c = Covid()
