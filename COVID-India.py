@@ -15,8 +15,7 @@ class Covid:
         state_data = self.soup.find_all("tr")
         state_list = [(state.get_text().split("\n"))[1:6]
                       for state in state_data][1:len(state_data)-2]
-        k = self._headers()
-        return [dict(zip(k, s)) for s in state_list]
+        return [dict(zip(self._headers(), s)) for s in state_list]
 
     def status_based_on_states(self):
         state_name = input("enter state name: ").lower()
@@ -24,8 +23,17 @@ class Covid:
             if i["Name of State / UT"].lower() == state_name:
                 return i
 
+    def total_cases(self):
+        state_data = self.soup.find_all("tr")
+        state_list = [(state.get_text().split("\n"))
+                      for state in state_data][-2][2:8]
+        key = ["Total Confermed cases in india",
+               "Total Recovered in India", "Total Deaths in India"]
+        return dict(zip(key, [s for s in state_list if s != ""]))
+
 
 c = Covid()
-print(c._headers())
+c._headers()
 print(c.all_states_status())
 print(c.status_based_on_states())
+print(c.total_cases())
