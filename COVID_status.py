@@ -14,16 +14,16 @@ def headers():
 
 
 def total_cases():
-    total = scrape_data().find(class_="total_row").get_text()
+    data = scrape_data().find(class_="total_row").get_text()
     keys = headers()[3:9]
-    value = total.split("\n")[2:9]
+    value = data.split("\n")[2:9]
     return [(f"{k}:{v}") for k, v in dict(zip(keys, value)).items()]
 
 
 def all_countries_status():
-    all_countries = scrape_data().find(
+    countries_data = scrape_data().find(
         id="main_table_countries_today").tbody.find_all("tr")
-    a = [d.get_text().split("\n")[1:9] for d in all_countries]
+    values = [d.get_text().split("\n")[1:9] for d in countries_data]
     keys = headers()[2:9]
     return [(dict(zip(keys, i))) for i in a]
 
