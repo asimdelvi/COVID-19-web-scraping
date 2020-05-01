@@ -25,7 +25,7 @@ def all_countries_status():
         id="main_table_countries_today").tbody.find_all("tr")
     values = [d.get_text().split("\n")[1:9] for d in countries_data]
     keys = headers()[2:9]
-    return [(dict(zip(keys, i))) for i in a]
+    return [(dict(zip(keys, i))) for i in values]
 
 
 def status_based_on_countries():
@@ -39,4 +39,4 @@ scrape_data()
 headers()
 print(total_cases())
 all_countries_status()
-print(status_based_on_countries())
+# print(status_based_on_countries())
