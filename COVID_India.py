@@ -26,14 +26,13 @@ class Covid:
     def total_cases(self):
         data = self.soup.find_all("tr")
         data_list = [(state.get_text().split("\n"))
-                     for state in data][-2][2:8]
+                     for state in data][-5][2:8]
         key = ["Total Confermed cases in india",
                "Total Recovered in India", "Total Deaths in India"]
         return dict(zip(key, [s for s in data_list if s != ""]))
 
 
 c = Covid()
-c._headers()
 print(c.all_states_status())
 print(c.status_based_on_states())
 print(c.total_cases())

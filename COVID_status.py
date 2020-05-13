@@ -36,7 +36,6 @@ def status_based_on_countries():
 
 
 scrape_data()
-headers()
 print(total_cases())
-all_countries_status()
-# print(status_based_on_countries())
+print(all_countries_status())
+print(status_based_on_countries())
