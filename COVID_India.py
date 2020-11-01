@@ -13,9 +13,10 @@ class Covid:
 
     def all_states_status(self):
         state_data = self.soup.find_all("tr")
-        state_list = [(state.get_text().split("\n"))[1:6]
-                      for state in state_data][1:len(state_data)-2]
-        return [dict(zip(self._headers(), s)) for s in state_list]
+        # state_list = [(state.get_text().split("\n"))[1:6]
+        #               for state in state_data][1:len(state_data)-2]
+        # return [dict(zip(self._headers(), s)) for s in state_list]
+        return state_data
 
     def status_based_on_states(self):
         state_name = input("enter state name: ").lower()
@@ -34,5 +35,5 @@ class Covid:
 
 c = Covid()
 print(c.all_states_status())
-print(c.status_based_on_states())
-print(c.total_cases())
+# print(c.status_based_on_states())
+# print(c.total_cases())
